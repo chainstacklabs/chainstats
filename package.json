@@ -1,8 +1,8 @@
 {
   "name": "chain-stats",
   "version": "0.1.0",
-  "private": false,
   "homepage": "https://kolebayev.github.io/chain-stats",
+  "private": false,
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-   "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

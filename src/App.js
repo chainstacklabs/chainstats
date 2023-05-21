@@ -5,6 +5,8 @@ import processData from './helpers/getData';
 import ProtocolCards from './components/ProtocolCards/ProtocolCards';
 import LayoutWrapper from './components/LayoutWrapper/LayoutWrapper';
 
+import './App.scss';
+
 export default function App() {
   const [data, setData] = useState(null);
 
@@ -16,19 +18,9 @@ export default function App() {
     <>
       <LayoutWrapper>
         {!data ? (
-          <p
-            style={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-              color: 'var(--color-typo-primary)',
-            }}
-          >
-            Loading...
-          </p>
+          <p className="layoutWrapper_loading">Loading...</p>
         ) : (
-          <div style={{ padding: '32px', margin: 'auto', maxWidth: '1400px' }}>
-            {/* <PlannedUpgrades plannedUpgrades={plannedUpgrades} /> */}
+          <div className="layoutWrapper_contentWrapper">
             <ProtocolCards data={data} />
           </div>
         )}

@@ -1,0 +1,28 @@
+.layoutWrapper {
+  &_loading {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--color-typo-primary);
+  }
+  &_contentWrapper {
+    padding: 32px;
+    margin: auto;
+    max-width: 1400px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .layoutWrapper {
+    &_loading {
+      //   display: flex;
+      //   justify-content: space-around;
+      //   align-items: center;
+      //   color: var(--color-typo-primary);
+    }
+    &_contentWrapper {
+      padding: 12px;
+      padding-bottom: 32px;
+    }
+  }
+}

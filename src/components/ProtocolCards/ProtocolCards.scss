@@ -93,3 +93,39 @@
 .spinner {
   color: var(--color-typo-primary);
 }
+
+@media only screen and (max-width: 600px) {
+  .row {
+    display: block;
+    border: none;
+    // grid-template-rows: 1fr;
+    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    // gap: 0px;
+    // height: 100%;
+    // border-bottom: 1px solid var(--color-bg-border);
+    // padding: 20px 0;
+    // &:last-of-type {
+    //   border-bottom: none;
+    // }
+    &:first-of-type {
+      padding-top: 0px;
+    }
+    &:last-of-type {
+      padding-bottom: 0px;
+    }
+  }
+
+  .nodes_list {
+    display: block;
+  }
+
+  .network_name {
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  .card {
+    margin-bottom: 12px;
+  }
+}

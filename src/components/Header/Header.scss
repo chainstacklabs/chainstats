@@ -30,3 +30,35 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .header {
+    display: block;
+    // flex-direction: column;
+    &_left {
+      align-items: flex-start;
+      margin-bottom: 24px;
+      &__labels {
+        margin-left: 12px;
+        .name {
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+        .description {
+          font-size: 14px;
+        }
+      }
+    }
+    &_right {
+      display: block;
+      // align-items: center;
+      // flex-direction: column;
+      & > :not(:last-child) {
+        margin-right: 8px;
+      }
+      & > :last-child {
+        display: none;
+      }
+    }
+  }
+}
