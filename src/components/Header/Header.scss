@@ -1,0 +1,32 @@
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  &_left {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    line-height: 100%;
+    &__labels {
+      margin-left: 12px;
+      .name {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 6px;
+        color: var(--color-typo-brand);
+      }
+      .description {
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--color-typo-secondary);
+      }
+    }
+  }
+  &_right {
+    display: flex;
+    align-items: center;
+    & > :not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}

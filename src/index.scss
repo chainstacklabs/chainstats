@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.labs-theme-light {
+  --color-bg-primary: #fff;
+  --color-bg-secondary: #f8f8f8;
+
+  --color-bg-border: rgba(0, 65, 102, 0.1);
+
+  --color-typo-primary: rgba(0, 0, 0, 0.88);
+  --color-typo-secondary: #8d8d8d;
+  --color-typo-brand: #007bff;
+
+  --color-header-button-bg: #fff;
+  --color-header-button-bg-hover: #f6f6f6;
+}
+
+.labs-theme-dark {
+  --color-bg-primary: #1b1b1b;
+  --color-bg-secondary: #141414;
+
+  --color-bg-border: rgba(255, 255, 255, 0.2);
+
+  --color-typo-primary: #fff;
+  --color-typo-secondary: #8d8d8d;
+  --color-typo-brand: #007bff;
+
+  --color-header-button-bg: #1b1b1b;
+  --color-header-button-bg-hover: #1b1b1b;
+}

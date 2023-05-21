@@ -1,0 +1,37 @@
+.button_brand {
+  background-color: var(--color-header-button-bg);
+  // color: var(--color-typo-brand);
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 4px 16px;
+
+  border: none;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-appearance: none;
+
+  &:hover {
+    background: var(--color-header-button-bg-hover);
+    transition: background-color 0.2s ease;
+  }
+
+  &_label {
+    margin-left: 8px;
+  }
+}
