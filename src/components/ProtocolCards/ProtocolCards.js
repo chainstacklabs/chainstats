@@ -43,7 +43,10 @@ export default function ProtocolCards({ data }) {
               obj.network.replace(formatNetworkName(protocolName), '') +
                 ' ' +
                 type
-            )}
+            )
+              .replace('-', ' ')
+              .replace('–', ' ')
+              .replace('—', ' ')}
           </div>
         </div>
         <div className="card_data__block">

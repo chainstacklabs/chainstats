@@ -15,6 +15,7 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <ConfigProvider
+      // csp={{ nonce: 'nonce-8I2THwJdqIKADedl7plt8g==' }}
       theme={{
         token: {
           colorPrimary: '#007BFF',
