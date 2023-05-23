@@ -55,12 +55,9 @@ export default function ProtocolCards({ data }) {
               <span>Size:</span>
               <div className="size_value">
                 <Tag
-                  style={{
-                    backgroundColor: 'var(--color-typo-brand)',
-                    color: '#fff',
-                  }}
                   icon={<DatabaseOutlined />}
                   bordered={false}
+                  className="custom_tag"
                 >
                   {obj[`${type}`]['node_data']['size_required']
                     ? gbToTb(obj[`${type}`]['node_data']['size_required'])

@@ -84,6 +84,10 @@
         }
         .size_value {
           font-weight: bold;
+          .custom_tag {
+            background-color: var(--color-typo-brand);
+            color: #fff;
+          }
         }
       }
     }
