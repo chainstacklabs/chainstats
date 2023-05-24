@@ -39,25 +39,25 @@ const parseProtocolData = (protocols) => {
 };
 
 const parseNodeData = (nodeData) => {
-  const parsedNodeData = {};
-
+  const parsedNodeData = [];
   for (const client in nodeData) {
-    if (nodeData.hasOwnProperty(client)) {
-      parsedNodeData['node_data'] = {
-        client,
-        size_required: nodeData[client].node_info.storage.size_required,
-      };
-    }
+      if (nodeData.hasOwnProperty(client)) {
+          parsedNodeData.push({
+              "node_data": {
+              client,
+              size_required: nodeData[client].node_info.storage.size_required
+          }});
+      }
   }
 
   return parsedNodeData;
-};
+}
 
 const processData = async () => {
   try {
     const protocolData = await fetchProtocolData();
     const parsedProtocolData = parseProtocolData(protocolData); // This it the JS object you can manipulate
-    // console.log(JSON.stringify(parsedProtocolData, null, 2)); // This is just so you can see how the entire object looks like
+    //console.log(JSON.stringify(parsedProtocolData, null, 2)); // This is just so you can see how the entire object looks like
     return parsedProtocolData;
   } catch (error) {
     console.error('Error processing data: ', error);
