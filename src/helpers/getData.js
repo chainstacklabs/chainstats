@@ -41,17 +41,18 @@ const parseProtocolData = (protocols) => {
 const parseNodeData = (nodeData) => {
   const parsedNodeData = [];
   for (const client in nodeData) {
-      if (nodeData.hasOwnProperty(client)) {
-          parsedNodeData.push({
-              "node_data": {
-              client,
-              size_required: nodeData[client].node_info.storage.size_required
-          }});
-      }
+    if (nodeData.hasOwnProperty(client)) {
+      parsedNodeData.push({
+        node_data: {
+          client,
+          size_required: nodeData[client].node_info.storage.size_required,
+        },
+      });
+    }
   }
 
   return parsedNodeData;
-}
+};
 
 const processData = async () => {
   try {
@@ -66,19 +67,45 @@ const processData = async () => {
 
 export default processData;
 
-const aa = {
-  protocol: 'aptos',
-  network: 'aptos-mainnet',
-  full: {
-    node_data: {
-      client: 'aptos-core',
-      size_required: 220,
-    },
+let mock_demo_not_exported = [
+  {
+    protocol: 'aptos',
+    network: 'aptos-mainnet',
+    full: [
+      {
+        node_data: {
+          client: 'aptos-core',
+          size_required: 220,
+        },
+      },
+    ],
+    archive: [
+      {
+        node_data: {
+          client: 'aptos-core',
+          size_required: 270,
+        },
+      },
+    ],
   },
-  archive: {
-    node_data: {
-      client: 'aptos-core',
-      size_required: 270,
-    },
+  {
+    protocol: 'aptos',
+    network: 'aptos-testnet',
+    full: [
+      {
+        node_data: {
+          client: 'aptos-core',
+          size_required: 540,
+        },
+      },
+    ],
+    archive: [
+      {
+        node_data: {
+          client: 'aptos-core',
+          size_required: 650,
+        },
+      },
+    ],
   },
-};
+];
