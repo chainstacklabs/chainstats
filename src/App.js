@@ -22,7 +22,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log(searchValue);
     if (searchValue.length === 0) {
       setSearchResult(initialData);
     } else {
