@@ -19,7 +19,6 @@ export default function ProtocolCards({ data }) {
         .map((item) => item.protocol)
     )
   );
-  console.log('protocolsArray', protocolsArray);
 
   const formatProtocolName = (protocolName) => {
     const protocols = {
