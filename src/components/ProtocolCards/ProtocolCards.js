@@ -10,8 +10,16 @@ import { DatabaseOutlined } from '@ant-design/icons';
 import './ProtocolCards.scss';
 
 export default function ProtocolCards({ data }) {
-  console.log(data);
-  const protocolsArray = Array.from(new Set(data.map((item) => item.protocol)));
+  const protocolsArray = Array.from(
+    new Set(
+      data
+        .filter((item) => !item.protocol.includes('corda'))
+        .filter((item) => !item.protocol.includes('fabric'))
+        .filter((item) => !item.protocol.includes('multichain'))
+        .map((item) => item.protocol)
+    )
+  );
+  console.log('protocolsArray', protocolsArray);
 
   const formatProtocolName = (protocolName) => {
     const protocols = {
@@ -35,68 +43,11 @@ export default function ProtocolCards({ data }) {
     return networks[newtworkName] || networks.default;
   };
 
-  // const Card = (protocolName, obj, type) => {
-  //   return (
-  //     <div className="card" key={keyGenerator()}>
-  //       <div className="card_header">
-  //         <div>
-  //           {capitalizeFirstLetter(
-  //             obj.network.replace(formatNetworkName(protocolName), '') +
-  //               // protocolName
-  //               ' ' +
-  //               type
-  //           )
-  //             .replace('-', ' ')
-  //             .replace('–', ' ')
-  //             .replace('—', ' ')}
-  //         </div>
-  //       </div>
-  //       <div className="card_data__block">
-  //         <div className="metadata_wrapper">
-  //           <div className="metadata">
-  //             <span>Size:</span>
-  //             <div className="size_value">
-  //               <Tag
-  //                 icon={<DatabaseOutlined />}
-  //                 bordered={false}
-  //                 className="custom_tag"
-  //               >
-  //                 {obj[type]['node_data']['size_required']
-  //                   ? gbToTb(obj[type]['node_data']['size_required'])
-  //                   : 'No data'}
-  //               </Tag>
-  //             </div>
-  //           </div>
-  //           <div className="metadata">
-  //             <span>Client:</span>
-  //             <div>
-  //               <Tag color="default" bordered={false}>
-  //                 {obj[type]['node_data'].client}
-  //               </Tag>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // };
-
-  const Card2 = (cardHeader, size, client) => {
+  const Card = (cardHeader, size, client) => {
     return (
       <div className="card" key={keyGenerator()}>
         <div className="card_header">
-          <div>
-            {cardHeader}
-            {/* {capitalizeFirstLetter(
-              obj.network.replace(formatNetworkName(protocolName), '') +
-                // protocolName
-                ' ' +
-                type
-            )
-              .replace('-', ' ')
-              .replace('–', ' ')
-              .replace('—', ' ')} */}
-          </div>
+          <div>{cardHeader}</div>
         </div>
         <div className="card_data__block">
           <div className="metadata_wrapper">
@@ -109,9 +60,6 @@ export default function ProtocolCards({ data }) {
                   className="custom_tag"
                 >
                   {size ? size : 'No Data'}
-                  {/* {obj[type]['node_data']['size_required']
-                    ? gbToTb(obj[type]['node_data']['size_required'])
-                    : 'No data'} */}
                 </Tag>
               </div>
             </div>
@@ -119,7 +67,6 @@ export default function ProtocolCards({ data }) {
               <span>Client:</span>
               <div>
                 <Tag color="default" bordered={false}>
-                  {/* {obj[type]['node_data'].client} */}
                   {client}
                 </Tag>
               </div>
@@ -146,7 +93,7 @@ export default function ProtocolCards({ data }) {
                   if (obj.hasOwnProperty(type)) {
                     obj[type].forEach((item) =>
                       arr.push(
-                        Card2(
+                        Card(
                           capitalizeFirstLetter(
                             obj.network.replace(
                               formatNetworkName(protocolName),
