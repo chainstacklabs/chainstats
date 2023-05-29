@@ -44,7 +44,7 @@ export default function Header(props) {
         })}
         <ButtonBrand
           label="Start for free"
-          link="https://console.chainstack.com/user/account/create"
+          link="http://console.chainstack.com/user/account/create?utm_campaign=chainstats"
         />
         <Button
           onClick={() =>
