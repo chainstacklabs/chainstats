@@ -43,6 +43,15 @@ export default function ProtocolCards({ data }) {
     return networks[newtworkName] || networks.default;
   };
 
+  const formatClientName = (clientName) => {
+    const clients = {
+      bitcoind: 'Bitcoin Core',
+      'zkevm-node': 'zkEVM Node',
+      default: clientName.charAt(0).toUpperCase() + clientName.slice(1),
+    };
+    return clients[clientName] || clients.default;
+  };
+
   const Card = (cardHeader, size, client) => {
     return (
       <div className="card" key={keyGenerator()}>
@@ -108,7 +117,7 @@ export default function ProtocolCards({ data }) {
                           item['node_data']['size_required']
                             ? gbToTb(item['node_data']['size_required'])
                             : 'No data',
-                          item['node_data']['client']
+                          formatClientName(item['node_data']['client'])
                         )
                       )
                     );
