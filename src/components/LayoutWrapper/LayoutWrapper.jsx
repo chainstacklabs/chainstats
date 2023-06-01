@@ -6,7 +6,7 @@ import './LayoutWrapper.scss';
 
 const LayoutWrapper = ({ children }) => {
   const [uiTheme, setUiTheme] = useLocalStorage(
-    'chainstack-faucet-app-theme',
+    'chainstack-chainstats-app-theme',
     'light'
   );
   const themeClassName = (theme) => {
