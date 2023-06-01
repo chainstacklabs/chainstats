@@ -16,6 +16,7 @@ export default function ProtocolCards({ data }) {
         .filter((item) => !item.protocol.includes('corda'))
         .filter((item) => !item.protocol.includes('fabric'))
         .filter((item) => !item.protocol.includes('multichain'))
+        .filter((item) => !item.protocol.includes('quorum'))
         .map((item) => item.protocol)
     )
   );
