@@ -23,7 +23,7 @@ export default function ProtocolCards({ data }) {
 
   const formatProtocolName = (protocolName) => {
     const protocols = {
-      binancesmartchain: 'Binance Smart Chain',
+      binancesmartchain: 'BNB Chain',
       cordapublic: 'corda public',
       polygonpos: 'polygon POS',
       polygonzkevm: 'polygon zkEVM',
