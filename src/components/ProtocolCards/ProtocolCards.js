@@ -47,6 +47,8 @@ export default function ProtocolCards({ data }) {
     const clients = {
       bitcoind: 'Bitcoin Core',
       'zkevm-node': 'zkEVM Node',
+      avalanchego: 'AvalancheGo',
+      'tezos-node': 'Octez',
       default: clientName.charAt(0).toUpperCase() + clientName.slice(1),
     };
     return clients[clientName] || clients.default;
