@@ -92,9 +92,9 @@ export default function ProtocolCards({ data }) {
     <>
       {protocolsArray.map((protocolName, idx) => (
         <div key={idx} className="row">
-          <div className="network_name">
+          <h2 className="network_name">
             {capitalizeFirstLetter(formatProtocolName(protocolName))}
-          </div>
+          </h2>
           <div className="nodes_list">
             {data.map((obj, index) => {
               if (protocolName === obj.protocol) {

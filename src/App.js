@@ -40,7 +40,6 @@ export default function App() {
           <div className="layoutWrapper_contentWrapper">
             <Input
               placeholder="Search by protocol name"
-              // bordered={false}
               className="search_input"
               size="large"
               prefix={<SearchOutlined />}

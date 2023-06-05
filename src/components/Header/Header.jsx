@@ -22,14 +22,13 @@ export default function Header(props) {
         />
 
         <div className="header_left__labels">
-          <div className="name">Blockchain size</div>
-          <div className="description">
+          <h1 className="name">Blockchain size</h1>
+          <h2 className="description">
             What is total amount of data stored within a blockchain network?
-          </div>
+          </h2>
         </div>
       </div>
       <div className="header_right">
-        {/* <Tag color="blue">Only for internal use</Tag> */}
         {[
           {
             label: 'Chainstack Labs',

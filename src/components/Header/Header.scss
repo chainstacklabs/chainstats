@@ -12,13 +12,16 @@
       .name {
         font-weight: 600;
         font-size: 20px;
-        margin-bottom: 6px;
+        line-height: 100%;
+        margin: 0 0 6px 0;
         color: var(--color-typo-brand);
       }
       .description {
         font-weight: 500;
+        line-height: 100%;
         font-size: 12px;
         color: var(--color-typo-secondary);
+        margin: 0;
       }
     }
   }
@@ -42,10 +45,14 @@
         margin-left: 12px;
         .name {
           font-size: 24px;
-          margin-bottom: 12px;
+          line-height: 100%;
+
+          margin-bottom: 0 0 12px 0;
         }
         .description {
           font-size: 14px;
+          line-height: 120%;
+          margin: 0;
         }
       }
     }
