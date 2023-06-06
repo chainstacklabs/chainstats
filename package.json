@@ -1,7 +1,7 @@
 {
   "name": "chainstats",
   "version": "0.1.0",
-  "homepage": "https://chainstacklabs.github.io/chainstats",
+  "homepage": "https://chainstats.org",
   "private": false,
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
