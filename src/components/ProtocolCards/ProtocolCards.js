@@ -24,7 +24,7 @@ export default function ProtocolCards({ data }) {
   const formatProtocolName = (protocolName) => {
     const protocols = {
       binancesmartchain: 'BNB Chain',
-      cordapublic: 'corda public',
+      // cordapublic: 'corda public',
       polygonpos: 'polygon POS',
       polygonzkevm: 'polygon zkEVM',
     };
@@ -35,7 +35,7 @@ export default function ProtocolCards({ data }) {
   const formatNetworkName = (newtworkName) => {
     const networks = {
       binancesmartchain: 'bsc-',
-      cordapublic: 'corda-public-',
+      // cordapublic: 'corda-public-',
       polygonpos: 'polygon-pos-',
       polygonzkevm: 'polygon-zkevm-',
       default: `${newtworkName}-`,

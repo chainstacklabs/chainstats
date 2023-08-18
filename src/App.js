@@ -16,6 +16,7 @@ export default function App() {
 
   useEffect(() => {
     processData().then((data) => {
+      console.log(data);
       setInitialData(data);
       setSearchResult(data);
     });
