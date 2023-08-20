@@ -6,6 +6,7 @@ import ProtocolCards from './components/ProtocolCards/ProtocolCards';
 import LayoutWrapper from './components/LayoutWrapper/LayoutWrapper';
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import TableWrapper from './components/TableWrapper/TableWrapper';
 
 import './App.scss';
 
@@ -16,7 +17,6 @@ export default function App() {
 
   useEffect(() => {
     processData().then((data) => {
-      console.log(data);
       setInitialData(data);
       setSearchResult(data);
     });
@@ -48,7 +48,10 @@ export default function App() {
               allowClear
             />
             {searchResult.length != 0 ? (
-              <ProtocolCards data={searchResult} searchValue={searchValue} />
+              <>
+                <TableWrapper data={searchResult} />
+                {/* <ProtocolCards data={searchResult} searchValue={searchValue} /> */}
+              </>
             ) : (
               <p className="layoutWrapper_no-results">
                 No results for
