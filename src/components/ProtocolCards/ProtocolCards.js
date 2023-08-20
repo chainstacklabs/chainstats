@@ -125,6 +125,7 @@ export default function ProtocolCards({ data }) {
                     );
                   }
                 });
+
                 return <>{arr}</>;
               }
             })}

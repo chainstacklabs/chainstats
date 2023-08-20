@@ -29,7 +29,9 @@ const LayoutWrapper = ({ children }) => {
           currentTheme={theme}
           handleThemeChange={setUiTheme}
         />
-        <div className="content">{children}</div>
+        <div style={{ maxWidth: '700px', margin: 'auto' }} className="content">
+          {children}
+        </div>
       </div>
     </ConfigProvider>
   );
