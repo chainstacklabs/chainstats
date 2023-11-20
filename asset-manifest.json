@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.82ad06b6.css",
-    "main.js": "/static/js/main.ce4a2ed7.js",
+    "main.css": "/static/css/main.05d3774a.css",
+    "main.js": "/static/js/main.97a3fbec.js",
     "static/media/scroll.svg": "/static/media/scroll.195fbaa2596978a860c487928b1d843d.svg",
     "static/media/starknet.svg": "/static/media/starknet.257e39d6cfa3bb147bc9130650eb961f.svg",
     "static/media/aptos.svg": "/static/media/aptos.19191ade46a35a0832230355991f837d.svg",
     "static/media/fantom.svg": "/static/media/fantom.6fd4b26c8443c000fe7927eecc817d6f.svg",
+    "static/media/ronin.svg": "/static/media/ronin.7a574d8aa48eb4899fac6de3fda5288d.svg",
     "static/media/arbitrum.svg": "/static/media/arbitrum.ec719871e18bcee1ae3a90909290825a.svg",
     "static/media/solana.svg": "/static/media/solana.9ca9ded464e81ba6391ae9109bee1009.svg",
     "static/media/harmony.svg": "/static/media/harmony.ac2498871f1a3b7febbc64d80f0e1927.svg",
@@ -27,11 +28,11 @@
     "static/media/cronos.svg": "/static/media/cronos.dca991b637a62c9749e655c3b4395daa.svg",
     "static/media/zkSync.svg": "/static/media/zkSync.8e822a2c9df5ff45c8fd432197e210bf.svg",
     "static/media/base.svg": "/static/media/base.7af3fbaf061b7cc6ad06b242c28aba51.svg",
-    "main.82ad06b6.css.map": "/static/css/main.82ad06b6.css.map",
-    "main.ce4a2ed7.js.map": "/static/js/main.ce4a2ed7.js.map"
+    "main.05d3774a.css.map": "/static/css/main.05d3774a.css.map",
+    "main.97a3fbec.js.map": "/static/js/main.97a3fbec.js.map"
   },
   "entrypoints": [
-    "static/css/main.82ad06b6.css",
-    "static/js/main.ce4a2ed7.js"
+    "static/css/main.05d3774a.css",
+    "static/js/main.97a3fbec.js"
   ]
 }
