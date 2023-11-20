@@ -10,10 +10,10 @@ import ProtocolIcon from '../ProtocolIcon/ProtocolIcon';
 const TableWrapper = ({ data }) => {
   const formatProtocolName = (protocolName) => {
     const protocols = {
-      binancesmartchain: 'BNB Chain',
+      bsc: 'BNB Chain',
       // cordapublic: 'corda public',
-      polygonpos: 'polygon POS',
-      polygonzkevm: 'polygon zkEVM',
+      'polygon-pos': 'polygon POS',
+      'polygon-zkevm': 'polygon zkEVM',
     };
 
     return protocols[protocolName] || protocolName;
@@ -57,7 +57,7 @@ const TableWrapper = ({ data }) => {
         if (item.hasOwnProperty(type)) {
           splitted.push({
             protocol:
-              item.protocol != 'zksync'
+              item.protocol !== 'zksync'
                 ? capitalizeFirstLetter(formatProtocolName(item.protocol))
                 : 'zkSync',
 
@@ -97,7 +97,7 @@ const TableWrapper = ({ data }) => {
     protocolNamesList.forEach((item) => {
       const tempIndexes = [];
       for (let i = 0; i < protocolsList.length; i++) {
-        if (protocolsList[i].protocol == item) {
+        if (protocolsList[i].protocol === item) {
           tempIndexes.push(i);
         }
       }

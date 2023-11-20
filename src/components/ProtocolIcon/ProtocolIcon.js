@@ -18,6 +18,7 @@ import { ReactComponent as Near } from './near.svg';
 import { ReactComponent as Optimism } from './optimism.svg';
 import { ReactComponent as PolygonPOS } from './polygonPOS.svg';
 import { ReactComponent as PolygonZkEvm } from './polygonZkEvm.svg';
+import { ReactComponent as Ronin } from './ronin.svg';
 import { ReactComponent as Scroll } from './scroll.svg';
 import { ReactComponent as Solana } from './solana.svg';
 import { ReactComponent as Starknet } from './starknet.svg';
@@ -43,6 +44,7 @@ const iconTypes = {
   Optimism: <Optimism />,
   'Polygon POS': <PolygonPOS />,
   'Polygon zkEVM': <PolygonZkEvm />,
+  Ronin: <Ronin />,
   Scroll: <Scroll />,
   Solana: <Solana />,
   Starknet: <Starknet />,
