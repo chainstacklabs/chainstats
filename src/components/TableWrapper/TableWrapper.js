@@ -1,10 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
-import {
-  capitalizeFirstLetter,
-  //   keyGenerator,
-  //   gbToTb,
-} from '../../helpers/utils';
+import { capitalizeFirstLetter } from '../../helpers/utils';
 import ProtocolIcon from '../ProtocolIcon/ProtocolIcon';
 
 const TableWrapper = ({ data }) => {
@@ -48,6 +44,7 @@ const TableWrapper = ({ data }) => {
         .filter((item) => !item.protocol.includes('fabric'))
         .filter((item) => !item.protocol.includes('multichain'))
         .filter((item) => !item.protocol.includes('quorum'))
+        .filter((item) => !item.network.includes('gnosis-testnet'))
     )
   )
     .map((item) => {
