@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+	<title>tron</title>
+	<defs>
+		<image width="210" height="210" id="img1" href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDIxMCAyMTAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMjEwIj4KCTx0aXRsZT5zb25pY19zeW1ib2wtc3ZnPC90aXRsZT4KCTxzdHlsZT4KCQkuczAgeyBmaWxsOiAjZWIwMDI5IH0gCgk8L3N0eWxlPgoJPHBhdGggY2xhc3M9InMwIiBkPSJtMTQ5LjUgNTYuOGwtMTEwLjEtMjAuMyA1Ny45IDE0NS44IDgwLjctOTguM3ptLTEuOCA4LjlsMTYuOSAxNi00Ni4xIDguM3ptLTM5LjIgMjIuN2wtNDguNS00MC4zIDc5LjMgMTQuNnptLTMuNSA3LjJsLTcuOSA2NS40LTQyLjctMTA3LjR6bTcuNCAzLjVsNTEtOS4zLTU4LjUgNzEuM3oiLz4KPC9zdmc+"/>
+	</defs>
+	<style>
+	</style>
+	<use id="tron" href="#img1" transform="matrix(.111,0,0,.111,-2,-2)"/>
+</svg>
