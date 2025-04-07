@@ -24,6 +24,8 @@ import { ReactComponent as Solana } from './solana.svg';
 import { ReactComponent as Starknet } from './starknet.svg';
 import { ReactComponent as Tezos } from './tezos.svg';
 import { ReactComponent as ZkSync } from './zkSync.svg';
+import { ReactComponent as Tron } from './tron.svg';
+import { ReactComponent as Sonic } from './sonic.svg';
 
 const iconTypes = {
   Aptos: <Aptos />,
@@ -50,6 +52,8 @@ const iconTypes = {
   Starknet: <Starknet />,
   Tezos: <Tezos />,
   zkSync: <ZkSync />,
+  TRON: <Tron />,
+  Sonic: <Sonic />,
 };
 
 const ProtocolIcon = ({ protocolName }) => {

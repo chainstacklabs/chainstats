@@ -10,6 +10,7 @@ const TableWrapper = ({ data }) => {
       // cordapublic: 'corda public',
       'polygon-pos': 'polygon POS',
       'polygon-zkevm': 'polygon zkEVM',
+      'tron': 'TRON',
     };
 
     return protocols[protocolName] || protocolName;
