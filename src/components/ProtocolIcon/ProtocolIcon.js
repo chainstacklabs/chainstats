@@ -26,6 +26,7 @@ import { ReactComponent as Tezos } from './tezos.svg';
 import { ReactComponent as ZkSync } from './zkSync.svg';
 import { ReactComponent as Tron } from './tron.svg';
 import { ReactComponent as Sonic } from './sonic.svg';
+import { ReactComponent as Celo } from './celo.svg';
 
 const iconTypes = {
   Aptos: <Aptos />,
@@ -54,6 +55,7 @@ const iconTypes = {
   zkSync: <ZkSync />,
   TRON: <Tron />,
   Sonic: <Sonic />,
+  Celo: <Celo />,
 };
 
 const ProtocolIcon = ({ protocolName }) => {
