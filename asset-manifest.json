@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.05d3774a.css",
-    "main.js": "/static/js/main.d63122a4.js",
+    "main.js": "/static/js/main.885d08f2.js",
     "static/media/scroll.svg": "/static/media/scroll.195fbaa2596978a860c487928b1d843d.svg",
     "static/media/starknet.svg": "/static/media/starknet.257e39d6cfa3bb147bc9130650eb961f.svg",
     "static/media/aptos.svg": "/static/media/aptos.19191ade46a35a0832230355991f837d.svg",
@@ -23,19 +23,21 @@
     "static/media/polygonPOS.svg": "/static/media/polygonPOS.b34f72dbe3aba50d3e67bbf8408882af.svg",
     "static/media/sonic.svg": "/static/media/sonic.321be45a39bf1cf1a4e4afdcf3a1125d.svg",
     "static/media/bnb.svg": "/static/media/bnb.db529f67b27d89067b870da4694f1ce4.svg",
+    "static/media/klaytn.svg": "/static/media/klaytn.6d2ab7540a267e989e3823d7f03f17e0.svg",
     "static/media/near.svg": "/static/media/near.8480242c4b5f4f1316a05b5da2c58084.svg",
     "static/media/tron.svg": "/static/media/tron.f3d1302535e83234d0a721fe5554b891.svg",
     "static/media/logoSquareRounded.svg": "/static/media/logoSquareRounded.138e5a020379321dc4503f7337b46c32.svg",
     "static/media/celo.svg": "/static/media/celo.908cc0bf673907241795d6d824937582.svg",
     "static/media/ethereum.svg": "/static/media/ethereum.f3956e86012584e07cf88ae015fa0069.svg",
+    "static/media/hyperliquid.svg": "/static/media/hyperliquid.f38fd5e635d796b3ae91e6859a65dbf0.svg",
     "static/media/cronos.svg": "/static/media/cronos.dca991b637a62c9749e655c3b4395daa.svg",
     "static/media/zkSync.svg": "/static/media/zkSync.8e822a2c9df5ff45c8fd432197e210bf.svg",
     "static/media/base.svg": "/static/media/base.7af3fbaf061b7cc6ad06b242c28aba51.svg",
     "main.05d3774a.css.map": "/static/css/main.05d3774a.css.map",
-    "main.d63122a4.js.map": "/static/js/main.d63122a4.js.map"
+    "main.885d08f2.js.map": "/static/js/main.885d08f2.js.map"
   },
   "entrypoints": [
     "static/css/main.05d3774a.css",
-    "static/js/main.d63122a4.js"
+    "static/js/main.885d08f2.js"
   ]
 }
