@@ -47,6 +47,11 @@
         color: var(--color-typo-primary);
       }
 
+      &:focus-visible {
+        outline: 2px solid var(--color-typo-brand);
+        outline-offset: 2px;
+      }
+
       .anticon {
         display: inline-flex;
         font-size: 14px;

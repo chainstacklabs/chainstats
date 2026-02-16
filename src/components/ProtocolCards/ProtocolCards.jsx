@@ -10,42 +10,42 @@ import { formatClientName } from '../../helpers/clientDisplay';
 
 import './ProtocolCards.scss';
 
-export default function ProtocolCards({ data }) {
-  const protocolsArray = Array.from(new Set(data.map((item) => item.protocol)));
-
-  const Card = ({ cardHeader, size, client }) => {
-    return (
-      <div className="card">
-        <div className="card_header">
-          <div>{cardHeader}</div>
-        </div>
-        <div className="card_data__block">
-          <div className="metadata_wrapper">
-            <div className="metadata">
-              <span>Size:</span>
-              <div className="size_value">
-                <Tag
-                  icon={<DatabaseOutlined />}
-                  bordered={false}
-                  className="custom_tag"
-                >
-                  {size ? size : 'No Data'}
-                </Tag>
-              </div>
+const Card = ({ cardHeader, size, client }) => {
+  return (
+    <div className="card">
+      <div className="card_header">
+        <div>{cardHeader}</div>
+      </div>
+      <div className="card_data__block">
+        <div className="metadata_wrapper">
+          <div className="metadata">
+            <span>Size:</span>
+            <div className="size_value">
+              <Tag
+                icon={<DatabaseOutlined />}
+                bordered={false}
+                className="custom_tag"
+              >
+                {size ? size : 'No Data'}
+              </Tag>
             </div>
-            <div className="metadata">
-              <span>Client:</span>
-              <div>
-                <Tag color="default" bordered={false}>
-                  {client}
-                </Tag>
-              </div>
+          </div>
+          <div className="metadata">
+            <span>Client:</span>
+            <div>
+              <Tag color="default" bordered={false}>
+                {client}
+              </Tag>
             </div>
           </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
+
+export default function ProtocolCards({ data }) {
+  const protocolsArray = Array.from(new Set(data.map((item) => item.protocol)));
 
   return (
     <>

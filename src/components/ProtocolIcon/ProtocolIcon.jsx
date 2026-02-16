@@ -82,8 +82,11 @@ const iconTypes = {
   Unichain: <Unichain />,
 };
 
-const ProtocolIcon = ({ protocolName }) => {
-  const fallbackLabel = protocolName
+const ProtocolIcon = ({ protocolName = '' }) => {
+  const safeProtocolName =
+    typeof protocolName === 'string' ? protocolName : '';
+
+  const fallbackLabel = safeProtocolName
     .split(/\s+/)
     .map((chunk) => chunk.charAt(0))
     .join('')
@@ -91,7 +94,7 @@ const ProtocolIcon = ({ protocolName }) => {
     .toUpperCase();
 
   const icon =
-    iconTypes[protocolName] || (
+    iconTypes[safeProtocolName] || (
       <TextBadgeIcon label={fallbackLabel || '?'} color="#6b7280" />
     );
 

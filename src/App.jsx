@@ -1,7 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import processData from './helpers/getData';
-
-// import PlannedUpgrades from "./components/PlannedUpgrades/PlannedUpgrades";
 import LayoutWrapper from './components/LayoutWrapper/LayoutWrapper';
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
@@ -46,7 +44,7 @@ export default function App() {
       setSearchResult(
         initialData.filter((item) => {
           return getProtocolSearchAliases(item.protocol).some((alias) =>
-            alias.includes(searchValue)
+            alias.toLowerCase().includes(searchValue)
           );
         })
       );

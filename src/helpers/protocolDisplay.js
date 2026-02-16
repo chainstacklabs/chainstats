@@ -59,7 +59,7 @@ const getProtocolSearchAliases = (protocolSlug) => {
   const displayName = formatProtocolDisplayName(protocolSlug);
   const additionalAliases = protocolSearchAliases[protocolSlug] || [];
 
-  return [
+  const aliases = [
     protocolSlug,
     displayName,
     ...additionalAliases,
@@ -67,9 +67,15 @@ const getProtocolSearchAliases = (protocolSlug) => {
     displayName.replace(/\s+/g, '-'),
     ...additionalAliases.map((alias) => alias.replace(/\s+/g, '')),
     ...additionalAliases.map((alias) => alias.replace(/\s+/g, '-')),
-  ]
-    .filter(Boolean)
-    .map((alias) => alias.toLowerCase());
+  ];
+
+  return Array.from(
+    new Set(
+      aliases
+        .filter(Boolean)
+        .map((alias) => alias.toLowerCase())
+    )
+  );
 };
 
 export {

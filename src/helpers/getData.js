@@ -15,8 +15,8 @@ const fetchProtocolData = async () => {
 const parseProtocolData = (protocols) => {
   const parsedData = [];
 
-  for (const protocol in protocols) {
-    for (const network in protocols[protocol]) {
+  for (const protocol of Object.keys(protocols)) {
+    for (const network of Object.keys(protocols[protocol])) {
       const { dedicated: dedicatedData } = protocols[protocol][network];
 
       if (dedicatedData) {

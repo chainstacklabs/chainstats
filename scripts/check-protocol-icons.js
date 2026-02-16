@@ -26,6 +26,7 @@ const protocolIconPath = path.join(
 
 const protocolMetadata = JSON.parse(fs.readFileSync(protocolMetadataPath, 'utf8'));
 
+// Keep this in sync with src/helpers/protocolDisplay.js for script-only runtime usage.
 const capitalizeFirstLetter = (value) => {
   if (!value) {
     return '';
@@ -44,9 +45,7 @@ const formatProtocolDisplayName = (protocolSlug) => {
 
 const extractIconKeys = () => {
   const fileContent = fs.readFileSync(protocolIconPath, 'utf8');
-  const iconMatches = fileContent.matchAll(
-    /^\s{2}(['A-Za-z0-9\s.-]+):\s*</gm
-  );
+  const iconMatches = fileContent.matchAll(/^\s*(['A-Za-z0-9\s.-]+):\s*</gm);
 
   return new Set(
     Array.from(iconMatches).map((match) =>
@@ -132,10 +131,7 @@ const main = async () => {
     .sort();
 
   if (missingIconProtocols.length) {
-    console.error('Protocol icons missing for currently visible protocols:');
-    missingIconProtocols.forEach((protocolName) => {
-      console.error(`- ${protocolName}`);
-    });
+    console.error('Protocol icons missing for one or more visible protocols.');
     process.exitCode = 1;
     return;
   }
@@ -146,6 +142,8 @@ const main = async () => {
 };
 
 main().catch((error) => {
-  console.error(`Protocol icon check failed: ${error.message}`);
+  console.error(
+    'Protocol icon check failed due to an invalid or unavailable API response.'
+  );
   process.exitCode = 1;
 });

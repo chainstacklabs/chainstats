@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Table } from 'antd';
 import ProtocolIcon from '../ProtocolIcon/ProtocolIcon';
 import {
@@ -7,10 +7,16 @@ import {
   formatNetworkDisplayName,
 } from '../../helpers/protocolDisplay';
 import { formatClientName } from '../../helpers/clientDisplay';
+import './TableWrapper.scss';
 
 const NODE_TYPE_RANKS = {
   full: 0,
   archive: 1,
+};
+
+const DEFAULT_SORTER = {
+  field: 'protocol',
+  order: 'ascend',
 };
 
 const getNetworkFamilyRank = (networkSlug) => {
@@ -35,7 +41,21 @@ const toFilterItems = (items, key) =>
       value,
     }));
 
+const SORTERS = {
+  protocol: (a, b) => a.protocol.localeCompare(b.protocol),
+  network: (a, b) => a.network.localeCompare(b.network),
+  client: (a, b) => a.client.localeCompare(b.client),
+  size_required: (a, b) => (a.size_required || 0) - (b.size_required || 0),
+};
+
 const TableWrapper = ({ data }) => {
+  const [tableFilters, setTableFilters] = useState({});
+  const [tableSorter, setTableSorter] = useState(DEFAULT_SORTER);
+  const activeSorter =
+    Array.isArray(tableSorter) && tableSorter.length
+      ? tableSorter[0]
+      : tableSorter;
+
   const protocolsList = useMemo(
     () =>
       data
@@ -92,11 +112,39 @@ const TableWrapper = ({ data }) => {
     [protocolsList]
   );
 
-  const [visibleData, setVisibleData] = useState(tableData);
+  const visibleData = useMemo(() => {
+    const protocolFilters = tableFilters.protocol || [];
+    const networkFilters = tableFilters.network || [];
+    const clientFilters = tableFilters.client || [];
 
-  useEffect(() => {
-    setVisibleData(tableData);
-  }, [tableData]);
+    let nextRows = tableData.filter((row) => {
+      if (protocolFilters.length && !protocolFilters.includes(row.protocol)) {
+        return false;
+      }
+
+      if (networkFilters.length && !networkFilters.includes(row.network)) {
+        return false;
+      }
+
+      if (clientFilters.length && !clientFilters.includes(row.client)) {
+        return false;
+      }
+
+      return true;
+    });
+
+    const sorterField = activeSorter?.field;
+    const sorterOrder = activeSorter?.order;
+    const compare = SORTERS[sorterField];
+
+    if (compare && sorterOrder) {
+      nextRows = [...nextRows].sort((a, b) =>
+        sorterOrder === 'ascend' ? compare(a, b) : -compare(a, b)
+      );
+    }
+
+    return nextRows;
+  }, [activeSorter, tableData, tableFilters]);
 
   const protocolRowSpans = useMemo(() => {
     const spans = new Map();
@@ -130,10 +178,10 @@ const TableWrapper = ({ data }) => {
         title: 'Protocol',
         dataIndex: 'protocol',
         filters: toFilterItems(protocolsList, 'protocol'),
-        onFilter: (value, record) => record.protocol === value,
-        sorter: (a, b) => a.protocol.localeCompare(b.protocol),
+        filteredValue: tableFilters.protocol || null,
+        sorter: true,
         sortDirections: ['descend', 'ascend'],
-        defaultSortOrder: 'ascend',
+        sortOrder: activeSorter?.field === 'protocol' ? activeSorter.order : null,
         onCell: (_, index) => {
           if (typeof index !== 'number') {
             return {};
@@ -152,17 +200,9 @@ const TableWrapper = ({ data }) => {
         },
         render: (text) => {
           return (
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className="protocol-cell">
               <ProtocolIcon protocolName={text} />
-
-              <div
-                style={{
-                  marginLeft: '8px',
-                  fontWeight: '500',
-                }}
-              >
-                {text}
-              </div>
+              <div className="protocol-cell__label">{text}</div>
             </div>
           );
         },
@@ -172,39 +212,42 @@ const TableWrapper = ({ data }) => {
         dataIndex: 'network',
         sortDirections: ['descend', 'ascend'],
         filters: toFilterItems(protocolsList, 'network'),
-        onFilter: (value, record) => record.network === value,
-        sorter: (a, b) => a.network.localeCompare(b.network),
+        filteredValue: tableFilters.network || null,
+        sorter: true,
+        sortOrder: activeSorter?.field === 'network' ? activeSorter.order : null,
       },
       {
         title: 'Client',
         dataIndex: 'client',
         filters: toFilterItems(protocolsList, 'client'),
-        onFilter: (value, record) => record.client === value,
-        sorter: (a, b) => a.client.localeCompare(b.client),
+        filteredValue: tableFilters.client || null,
+        sorter: true,
         sortDirections: ['descend', 'ascend'],
+        sortOrder: activeSorter?.field === 'client' ? activeSorter.order : null,
       },
       {
         title: 'Data stored, GB',
         dataIndex: 'size_required',
         align: 'right',
-        sorter: (a, b) => (a.size_required || 0) - (b.size_required || 0),
+        sorter: true,
+        sortOrder:
+          activeSorter?.field === 'size_required' ? activeSorter.order : null,
         render: (value) =>
           value !== undefined && value !== null
             ? Number(value).toLocaleString()
             : 'No data',
       },
     ],
-    [protocolRowSpans, protocolsList]
+    [activeSorter, protocolRowSpans, protocolsList, tableFilters]
   );
 
   return (
     <Table
       columns={columns}
-      dataSource={tableData}
-      onChange={(_, __, ___, extra) => {
-        if (Array.isArray(extra?.currentDataSource)) {
-          setVisibleData(extra.currentDataSource);
-        }
+      dataSource={visibleData}
+      onChange={(_, filters, sorter) => {
+        setTableFilters(filters || {});
+        setTableSorter(sorter || DEFAULT_SORTER);
       }}
       pagination={false}
       scroll={{ x: 500 }}
