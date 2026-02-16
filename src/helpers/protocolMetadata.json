@@ -1,0 +1,14 @@
+{
+  "protocolDisplayNames": {
+    "bsc": "BNB Smart Chain",
+    "polygon-pos": "Polygon PoS",
+    "polygon-zkevm": "Polygon zkEVM",
+    "tron": "TRON",
+    "zksync": "zkSync"
+  },
+  "networkPrefixOverrides": {
+    "bsc": "bsc-",
+    "polygon-pos": "polygon-pos-",
+    "polygon-zkevm": "polygon-zkevm-"
+  }
+}

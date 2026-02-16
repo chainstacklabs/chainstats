@@ -31,6 +31,27 @@
     & > :not(:last-child) {
       margin-right: 8px;
     }
+
+    .theme_toggle.ant-btn {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+      min-width: 32px;
+      height: 32px;
+      padding: 0;
+      color: var(--color-typo-primary);
+
+      &:hover,
+      &:focus {
+        background: transparent;
+        color: var(--color-typo-primary);
+      }
+
+      .anticon {
+        display: inline-flex;
+        font-size: 14px;
+      }
+    }
   }
 }
 

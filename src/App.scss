@@ -19,6 +19,11 @@
     line-height: 140%;
     color: var(--color-typo-primary);
   }
+  &_error {
+    text-align: center;
+    line-height: 140%;
+    color: #c62828;
+  }
 }
 
 @media only screen and (max-width: 600px) {
