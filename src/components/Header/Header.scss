@@ -32,7 +32,9 @@
       margin-right: 8px;
     }
 
-    .theme_toggle.ant-btn {
+    .theme_toggle.ant-btn,
+    .theme_toggle.ant-btn.ant-btn-text,
+    .theme_toggle.ant-btn.ant-btn-variant-text {
       border: none;
       box-shadow: none;
       background: transparent;
@@ -42,14 +44,20 @@
       color: var(--color-typo-primary);
 
       &:hover,
-      &:focus {
+      &:focus,
+      &:active {
         background: transparent;
+        border-color: transparent;
+        box-shadow: none;
         color: var(--color-typo-primary);
       }
 
       &:focus-visible {
         outline: 2px solid var(--color-typo-brand);
         outline-offset: 2px;
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
       }
 
       .anticon {
