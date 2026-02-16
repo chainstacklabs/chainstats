@@ -34,7 +34,7 @@ Production URL: [https://chainstats.org](https://chainstats.org)
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 24+
 - npm 9+
 
 ### Install
