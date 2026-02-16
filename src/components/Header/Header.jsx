@@ -46,10 +46,14 @@ export default function Header(props) {
           link="http://console.chainstack.com/user/account/create?utm_campaign=chainstats"
         />
         <Button
+          className="theme_toggle"
           onClick={() =>
             props.handleThemeChange(props.theme === 'light' ? 'dark' : 'light')
           }
-          type="ghost"
+          type="text"
+          aria-label={
+            props.theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'
+          }
           icon={
             <Icon component={props.theme === 'light' ? IconSun : IconMoon} />
           }

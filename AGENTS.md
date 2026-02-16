@@ -5,7 +5,7 @@ This repository contains a React application that displays blockchain node stati
 ## 1. Use Development Server for Testing
 
 * **Always use `npm start`** for local development.
-* **Test UI changes** in browser at http://localhost:3000.
+* **Test UI changes** in browser at http://localhost:5173.
 * **Do _not_ deploy to production** during agent development sessions.
 * **Check console** for any React warnings or errors.
 
@@ -16,7 +16,7 @@ If you update dependencies:
 1. Install packages with `npm install`.
 2. Update specific packages with `npm update <package>`.
 3. Run `npm audit fix` to resolve vulnerabilities.
-4. Verify compatibility with React 18 and Ant Design 5.
+4. Verify compatibility with current React and Ant Design versions in `package.json`.
 
 ## 3. Development Workflow
 
@@ -95,8 +95,8 @@ src/
 When adding new protocols:
 
 1. Add SVG icon to `src/components/ProtocolIcon/`
-2. Import in `ProtocolIcon.js`
-3. Add case in switch statement
+2. Import in `ProtocolIcon.jsx`
+3. Add mapping in `iconTypes`
 4. Test icon rendering
 
 ## 10. Search Functionality
@@ -129,7 +129,7 @@ For GitHub Pages deployment:
 
 ### Add New Protocol
 1. Add icon to ProtocolIcon directory
-2. Update ProtocolIcon.js switch statement
+2. Update `iconTypes` in `ProtocolIcon.jsx`
 3. Test data display in table/cards
 
 ### Update Styling

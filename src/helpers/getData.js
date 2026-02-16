@@ -8,29 +8,32 @@ const fetchProtocolData = async () => {
     return response.data.Enterprise.protocols;
   } catch (error) {
     console.error('Error fetching data: ', error);
+    throw error;
   }
 };
 
 const parseProtocolData = (protocols) => {
   const parsedData = [];
 
-  for (const protocol in protocols) {
-    for (const network in protocols[protocol]) {
+  for (const protocol of Object.keys(protocols)) {
+    for (const network of Object.keys(protocols[protocol])) {
       const { dedicated: dedicatedData } = protocols[protocol][network];
 
       if (dedicatedData) {
         const { full, archive } = dedicatedData;
-        const fullParsed = full ? parseNodeData(full) : undefined;
-        const archiveParsed = archive ? parseNodeData(archive) : undefined;
+        const fullParsed = full ? parseNodeData(full) : [];
+        const archiveParsed = archive ? parseNodeData(archive) : [];
 
         const protocolItem = {
           protocol,
           network,
-          ...(fullParsed && { full: fullParsed }),
-          ...(archiveParsed && { archive: archiveParsed }),
+          ...(fullParsed.length && { full: fullParsed }),
+          ...(archiveParsed.length && { archive: archiveParsed }),
         };
 
-        parsedData.push(protocolItem);
+        if (protocolItem.full || protocolItem.archive) {
+          parsedData.push(protocolItem);
+        }
       }
     }
   }
@@ -41,11 +44,28 @@ const parseProtocolData = (protocols) => {
 const parseNodeData = (nodeData) => {
   const parsedNodeData = [];
   for (const client in nodeData) {
-    if (nodeData.hasOwnProperty(client)) {
+    if (Object.hasOwn(nodeData, client)) {
+      const clientData = nodeData[client];
+      const sizeRequired = clientData?.node_info?.storage?.size_required;
+
+      if (
+        clientData?.type !== 'public' ||
+        sizeRequired === null ||
+        sizeRequired === undefined
+      ) {
+        continue;
+      }
+
+      const normalizedSize = Number(sizeRequired);
+
+      if (!Number.isFinite(normalizedSize)) {
+        continue;
+      }
+
       parsedNodeData.push({
         node_data: {
           client,
-          size_required: nodeData[client].node_info.storage.size_required,
+          size_required: normalizedSize,
         },
       });
     }
@@ -55,57 +75,9 @@ const parseNodeData = (nodeData) => {
 };
 
 const processData = async () => {
-  try {
-    const protocolData = await fetchProtocolData();
-    const parsedProtocolData = parseProtocolData(protocolData); // This it the JS object you can manipulate
-    //console.log(JSON.stringify(parsedProtocolData, null, 2)); // This is just so you can see how the entire object looks like
-    return parsedProtocolData;
-  } catch (error) {
-    console.error('Error processing data: ', error);
-  }
+  const protocolData = await fetchProtocolData();
+  const parsedProtocolData = parseProtocolData(protocolData);
+  return parsedProtocolData;
 };
 
 export default processData;
-
-let mock_demo_not_exported = [
-  {
-    protocol: 'aptos',
-    network: 'aptos-mainnet',
-    full: [
-      {
-        node_data: {
-          client: 'aptos-core',
-          size_required: 220,
-        },
-      },
-    ],
-    archive: [
-      {
-        node_data: {
-          client: 'aptos-core',
-          size_required: 270,
-        },
-      },
-    ],
-  },
-  {
-    protocol: 'aptos',
-    network: 'aptos-testnet',
-    full: [
-      {
-        node_data: {
-          client: 'aptos-core',
-          size_required: 540,
-        },
-      },
-    ],
-    archive: [
-      {
-        node_data: {
-          client: 'aptos-core',
-          size_required: 650,
-        },
-      },
-    ],
-  },
-];
