@@ -29,6 +29,7 @@ import Sonic from './sonic.svg?react';
 import Celo from './celo.svg?react';
 import Hyperliquid from './hyperliquid.svg?react';
 import Klaytn from './klaytn.svg?react';
+import Megaeth from './megaeth.svg?react';
 import Monad from './monad.svg?react';
 import Plasma from './plasma.svg?react';
 import Tempo from './tempo.svg?react';
@@ -76,6 +77,7 @@ const iconTypes = {
   Celo: <Celo />,
   Klaytn: <Klaytn />,
   Hyperliquid: <Hyperliquid />,
+  Megaeth: <Megaeth />,
   Monad: <Monad />,
   Plasma: <Plasma />,
   Tempo: <Tempo />,
