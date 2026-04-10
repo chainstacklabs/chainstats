@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import ProtocolIcon from './ProtocolIcon';
 
 describe('ProtocolIcon', () => {
-  it.each(['Monad', 'Plasma', 'Tempo', 'Unichain'])(
+  it.each(['Megaeth', 'Monad', 'Plasma', 'Tempo', 'Unichain'])(
     'renders an SVG icon for %s',
     (protocolName) => {
       const { container } = render(<ProtocolIcon protocolName={protocolName} />);
