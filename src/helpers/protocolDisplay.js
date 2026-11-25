@@ -46,7 +46,7 @@ const formatNetworkLabel = (networkName, protocolSlug) => {
     return tokens.filter((token) => token.toLowerCase() !== 'testnet').join(' ');
   }
 
-  return cleanedLabel;
+  return cleanedLabel.replace(/^testnet(\d+)$/, 'testnet $1');
 };
 
 const formatNetworkDisplayName = (networkName, protocolSlug, nodeType) => {

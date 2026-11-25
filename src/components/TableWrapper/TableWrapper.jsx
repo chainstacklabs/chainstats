@@ -226,7 +226,7 @@ const TableWrapper = ({ data }) => {
         sortOrder: activeSorter?.field === 'client' ? activeSorter.order : null,
       },
       {
-        title: 'Data stored, GB',
+        title: 'Estimated node storage (GB)',
         dataIndex: 'size_required',
         align: 'right',
         sorter: true,

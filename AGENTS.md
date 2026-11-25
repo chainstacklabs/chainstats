@@ -60,9 +60,9 @@ When modifying components:
 
 ## 6. Data Management
 
-The app fetches data from Chainstack API:
+The app fetches data from Chainstack's public pricing catalog:
 
-* **API endpoint**: `https://console.chainstack.com/api/core/v1/calc/`
+* **Catalog URL**: `https://static.chainstack.com/pricing/pricing_current.json`
 * **Data processing**: `src/helpers/getData.js`
 * **Caching**: Consider localStorage for performance
 * **Error handling**: Display user-friendly messages

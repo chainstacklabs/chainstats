@@ -1,10 +1,24 @@
 {
   "protocolDisplayNames": {
+    "adichain": "ADI Chain",
     "bsc": "BNB Smart Chain",
+    "gnosis": "Gnosis Chain",
+    "klaytn": "Kaia",
+    "megaeth": "MegaETH",
+    "neox": "Neo X",
     "polygon-pos": "Polygon PoS",
     "polygon-zkevm": "Polygon zkEVM",
+    "robinhood": "Robinhood Chain",
+    "tac": "TAC",
     "tron": "TRON",
-    "zksync": "zkSync"
+    "xdc": "XDC Network",
+    "xlayer": "X Layer",
+    "xrpl": "XRP Ledger",
+    "zklink": "zkLink",
+    "zksync": "ZKsync Era"
+  },
+  "protocolSearchAliases": {
+    "xrpl": ["XRP"]
   },
   "networkPrefixOverrides": {
     "bsc": "bsc-",

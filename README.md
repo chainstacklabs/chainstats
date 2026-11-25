@@ -6,12 +6,9 @@ Production URL: [https://chainstats.org](https://chainstats.org)
 
 ## Data Source
 
-- API endpoint: `https://console.chainstack.com/api/core/v1/calc/`
-- Source path: `Enterprise.protocols`
-- Inclusion rule in UI:
-  - Use only `dedicated` entries
-  - Include only nodes where `type === "public"`
-  - Skip entries without `node_info.storage.size_required`
+- Catalog: `https://static.chainstack.com/pricing/pricing_current.json`, also used by the Chainstack pricing page.
+- Read full and archive entries from `blockchains` with at least one dedicated cloud and a positive `total_storage_gb`.
+- Display the largest estimate when the catalog lists several configurations for the same protocol, network, node type, and client. The catalog uses requested volume capacity or configuration defaults.
 
 ## Features
 
@@ -25,7 +22,7 @@ Production URL: [https://chainstats.org](https://chainstats.org)
 ## Stack
 
 - React 19
-- Vite 7
+- Vite 8
 - Ant Design 6
 - Sass
 - Axios
@@ -57,7 +54,7 @@ Open [http://localhost:5173](http://localhost:5173).
 - `npm run build`: create production build in `dist/`.
 - `npm run preview`: preview built app locally.
 - `npm run test`: run Vitest (`--passWithNoTests`).
-- `npm run check:protocol-icons`: compare visible API protocols to icon map coverage.
+- `npm run check:protocol-icons`: validate the pricing catalog and report custom icon coverage and fallback badge usage.
 - `npm run deploy`: publish `dist/` to GitHub Pages.
 
 ## CI
@@ -65,6 +62,7 @@ Open [http://localhost:5173](http://localhost:5173).
 Workflow: `.github/workflows/ci.yml`
 
 Runs:
+
 1. `npm ci`
 2. `npm run check:protocol-icons`
 3. `npm run build`
