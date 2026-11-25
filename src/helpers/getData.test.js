@@ -104,6 +104,30 @@ describe('processData', () => {
     ]);
   });
 
+  it.each([
+    ['non-string network name', { network: { name: 42 } }],
+    ['non-string client name', { client: { name: { id: 'bor' } } }],
+    ['blank network name', { network: { name: '   ' } }],
+    ['blank client name', { client: { name: '   ' } }],
+  ])('skips entries with a %s', async (_, invalidName) => {
+    axios.get.mockResolvedValue({
+      data: {
+        blockchains: {
+          invalid: catalogEntry(invalidName),
+          valid: catalogEntry(),
+        },
+      },
+    });
+
+    await expect(processData()).resolves.toEqual([
+      {
+        protocol: 'polygon-pos',
+        network: 'polygon-pos-mainnet',
+        full: [{ node_data: { client: 'bor', size_required: 850 } }],
+      },
+    ]);
+  });
+
   it('rejects a catalog with no usable storage sizes', async () => {
     axios.get.mockResolvedValue({
       data: { blockchains: { missingSize: catalogEntry({ total_storage_gb: 0 }) } },
