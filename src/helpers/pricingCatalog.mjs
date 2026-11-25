@@ -43,8 +43,10 @@ const parsePricingCatalog = (data) => {
       size <= 0 ||
       typeof protocolName !== 'string' ||
       !protocolName.trim() ||
-      !network ||
-      !client
+      typeof network !== 'string' ||
+      !network.trim() ||
+      typeof client !== 'string' ||
+      !client.trim()
     ) {
       continue;
     }
