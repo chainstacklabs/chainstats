@@ -8,7 +8,10 @@ import {
 describe('protocolDisplay', () => {
   it('formats known protocol slugs to display names', () => {
     expect(formatProtocolDisplayName('bsc')).toBe('BNB Smart Chain');
-    expect(formatProtocolDisplayName('zksync')).toBe('zkSync');
+    expect(formatProtocolDisplayName('klaytn')).toBe('Kaia');
+    expect(formatProtocolDisplayName('megaeth')).toBe('MegaETH');
+    expect(formatProtocolDisplayName('xrpl')).toBe('XRP Ledger');
+    expect(formatProtocolDisplayName('zksync')).toBe('ZKsync Era');
   });
 
   it('formats unknown protocol slugs by capitalizing', () => {
@@ -31,6 +34,9 @@ describe('protocolDisplay', () => {
     expect(
       formatNetworkDisplayName('bitcoin-signet-testnet', 'bitcoin', 'full')
     ).toBe('Signet full');
+    expect(
+      formatNetworkDisplayName('bitcoin-testnet4', 'bitcoin', 'full')
+    ).toBe('Testnet 4 full');
   });
 
   it('creates search aliases for slug and display variants', () => {
@@ -41,6 +47,9 @@ describe('protocolDisplay', () => {
         'bnbsmartchain',
         'bnb-smart-chain'
       ])
+    );
+    expect(getProtocolSearchAliases('klaytn')).toEqual(
+      expect.arrayContaining(['klaytn', 'kaia'])
     );
   });
 });

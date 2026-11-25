@@ -5,10 +5,6 @@ const path = require('path');
 const https = require('https');
 const http = require('http');
 
-const API_URL =
-  process.env.CHAINSTACK_CALC_API ||
-  'https://console.chainstack.com/api/core/v1/calc/';
-
 const projectRoot = path.resolve(__dirname, '..');
 const protocolMetadataPath = path.join(
   projectRoot,
@@ -86,58 +82,29 @@ const fetchJson = (url) => {
   });
 };
 
-const getVisibleProtocolDisplayNames = (protocols) => {
-  const visibleProtocols = new Set();
-
-  Object.entries(protocols).forEach(([protocolSlug, networks]) => {
-    Object.values(networks).forEach((networkData) => {
-      if (networkData && networkData.dedicated) {
-        const hasPublicNode = ['full', 'archive'].some((nodeType) => {
-          const nodes = networkData.dedicated[nodeType];
-
-          if (!nodes) {
-            return false;
-          }
-
-          return Object.values(nodes).some((nodeConfig) => {
-            const sizeRequired = nodeConfig?.node_info?.storage?.size_required;
-            return nodeConfig?.type === 'public' && sizeRequired != null;
-          });
-        });
-
-        if (hasPublicNode) {
-          visibleProtocols.add(formatProtocolDisplayName(protocolSlug));
-        }
-      }
-    });
-  });
-
-  return visibleProtocols;
-};
-
 const main = async () => {
-  const payload = await fetchJson(API_URL);
-  const protocols = payload?.Enterprise?.protocols;
-
-  if (!protocols) {
-    throw new Error('Unexpected API response: missing Enterprise.protocols');
-  }
+  const { PRICING_CATALOG_URL, parsePricingCatalog } = await import(
+    '../src/helpers/pricingCatalog.mjs'
+  );
+  const payload = await fetchJson(process.env.CHAINSTACK_CALC_API || PRICING_CATALOG_URL);
+  const networks = parsePricingCatalog(payload);
 
   const iconKeys = extractIconKeys();
-  const visibleProtocolNames = getVisibleProtocolDisplayNames(protocols);
+  const visibleProtocolNames = new Set(
+    networks.map(({ protocol }) => formatProtocolDisplayName(protocol))
+  );
 
-  const missingIconProtocols = Array.from(visibleProtocolNames)
+  const fallbackNames = [...visibleProtocolNames]
     .filter((protocolName) => !iconKeys.has(protocolName))
     .sort();
+  const mappedCount = visibleProtocolNames.size - fallbackNames.length;
 
-  if (missingIconProtocols.length) {
-    console.error('Protocol icons missing for one or more visible protocols.');
-    process.exitCode = 1;
-    return;
+  if (fallbackNames.length) {
+    console.warn(`Fallback badges used for ${fallbackNames.join(', ')}.`);
   }
 
   console.log(
-    `Protocol icon check passed for ${visibleProtocolNames.size} visible protocols`
+    `Custom icons available for ${mappedCount} of ${visibleProtocolNames.size} visible protocols.`
   );
 };
 

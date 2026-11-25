@@ -24,7 +24,7 @@ export default function Header(props) {
         <div className="header_left__labels">
           <h1 className="name">Blockchain size</h1>
           <h2 className="description">
-            What is total amount of data stored within a blockchain network?
+            Storage estimates for full and archive nodes by network and client
           </h2>
         </div>
       </div>
